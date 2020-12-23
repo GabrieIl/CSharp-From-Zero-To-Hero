@@ -16,26 +16,42 @@ namespace BootCamp.Chapter
     {
         public static int PromptInt(string message)
         {
-            // To do: call your implementation. 
-            return 0;
+            // To do: call your implementation.
+            Console.Write($" {message} ");
+            return int.Parse(Console.ReadLine());
         }
 
         public static string PromptString(string message)
         {
             // To do: call your implementation. 
-            return "";
+            Console.Write($" {message} ");
+            return Console.ReadLine();
         }
 
         public static float PromptFloat(string message)
         {
             // To do: call your implementation. 
-            return 0;
+            Console.Write($" {message} ");
+            return float.Parse(Console.ReadLine());
         }
 
         public static float CalculateBmi(float weight, float height)
         {
             // To do: call your implementation. 
-            return 0;
+            return (float)(weight/(Math.Pow(height, 2)));
+        }
+        
+        public static string VerifyBmiStatus(float BMI)
+        {
+            // To do: call your implementation. 
+            if (BMI <= 18.49)
+                return "Under weight";
+            else if (BMI >= 18.50 && BMI <= 24.99)
+                return "Normal weight";
+            else if (BMI >= 25 && BMI <= 29.99)
+                return "Overweight";
+            else 
+                return "Obesity";
         }
     }
 }
