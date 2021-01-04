@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
 
 namespace BootCamp.Chapter
 {
@@ -32,7 +33,7 @@ namespace BootCamp.Chapter
         {
             // To do: call your implementation. 
             Console.Write($" {message} ");
-            return float.Parse(Console.ReadLine());
+            return float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
         }
 
         public static float CalculateBmi(float weight, float height)
