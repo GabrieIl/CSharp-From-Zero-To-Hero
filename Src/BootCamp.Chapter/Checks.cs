@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
+using System.Linq;
 
 namespace BootCamp.Chapter
 {
@@ -16,26 +18,68 @@ namespace BootCamp.Chapter
     {
         public static int PromptInt(string message)
         {
-            // To do: call your implementation. 
-            return 0;
+            // To do: call your implementation.
+            Console.Write($" {message} ");
+            var input = Console.ReadLine();
+            int.TryParse(input, out int output);
+
+            if (output != 0) return output;
+            Console.WriteLine($"\"{input}\" is not a valid number.");
+            return -1;
         }
 
         public static string PromptString(string message)
         {
             // To do: call your implementation. 
-            return "";
+            Console.Write($" {message} ");
+            var input = Console.ReadLine();
+            if (string.IsNullOrEmpty(input))
+            {
+                Console.WriteLine("Name cannot be empty.");
+                return "-";
+            }
+            return (string)input;
         }
 
         public static float PromptFloat(string message)
         {
             // To do: call your implementation. 
-            return 0;
+            Console.Write($" {message} ");
+            var input = Console.ReadLine();
+            
+            float.TryParse(input, NumberStyles.Any, CultureInfo.InvariantCulture, out float output);
+            
+            if (output != 0) return output;
+            Console.WriteLine($"\"{input}\" is not a valid number.");
+            return -1;
         }
 
         public static float CalculateBmi(float weight, float height)
         {
             // To do: call your implementation. 
-            return 0;
+            string wZeroError = "", hZeroError = "";
+
+            if (weight <= 0) wZeroError = $"Weight cannot be equal or less than zero, but was {weight}.";
+            if (height <= 0) hZeroError = $"Height cannot be equal or less than zero, but was {height}.";
+            if (weight <= 0 || height <= 0) 
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:" + wZeroError + hZeroError);
+                return -1;
+            }
+            return (float)(weight/(Math.Pow(height, 2)));
+        }
+        
+        public static string VerifyBmiStatus(float BMI)
+        {
+            // To do: call your implementation. 
+            if (BMI <= 18.49)
+                return "Under weight";
+            else if (BMI >= 18.50 && BMI <= 24.99)
+                return "Normal weight";
+            else if (BMI >= 25 && BMI <= 29.99)
+                return "Overweight";
+            else 
+                return "Obesity";
         }
     }
 }
